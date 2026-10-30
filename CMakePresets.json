@@ -1,0 +1,29 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "x64-debug",
+      "displayName": "Правильна реалізація — x64 Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "VCPKG_TARGET_TRIPLET": "x64-windows",
+        "LAB7_INJECT_BUG": "OFF"
+      }
+    },
+    {
+      "name": "x64-negative",
+      "inherits": "x64-debug",
+      "displayName": "Негативний самоконтроль — навмисна помилка",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "LAB7_INJECT_BUG": "ON"
+      }
+    }
+  ]
+}
